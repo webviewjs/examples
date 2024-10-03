@@ -1,0 +1,25 @@
+{
+  "name": "webview-examples",
+  "scripts": {
+    "build": "concurrently \"npm run build:node\" \"npm run build:bun\" \"npm run build:deno\"",
+    "build:node": "webview --build --input ./src/node.js --output ./dist-node --resources resources.json --name NodeApp",
+    "build:bun": "bun build --compile ./src/bun.ts --outfile ./dist-bun/BunApp",
+    "build:deno": "deno compile -A --output ./dist-deno/DenoApp ./src/deno.ts",
+    "dev": "concurrently \"npm run dev:node\" \"npm run dev:bun\" \"npm run dev:deno\"",
+    "dev:node": "node ./src/node.js",
+    "dev:bun": "bun run ./src/bun.ts",
+    "dev:deno": "deno run -A ./src/deno.ts",
+    "start": "concurrently \"npm run start:node\" \"npm run start:bun\" \"npm run start:deno\"",
+    "start:node": "./dist-node/NodeApp",
+    "start:bun": "./dist-bun/BunApp",
+    "start:deno": "./dist-deno/DenoApp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@webviewjs/webview": "^0.1.0",
+    "concurrently": "^9.0.1"
+  }
+}
