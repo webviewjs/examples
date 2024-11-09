@@ -27,3 +27,5 @@ error: Uncaught (in promise) TypeError: LoadLibraryExW failed: The specified mod
     at Object.Module._extensions..js (node:module:762:10)
     at Module.load (node:module:662:32)
 ```
+
+See [this issue](https://github.com/denoland/deno/issues/23266) tracker of deno.
