@@ -2,14 +2,15 @@ import { Application } from '@webviewjs/webview';
 
 const app = new Application();
 
-const window = app.createBrowserWindow({
+const window = app.createBrowserWindow();
+const webview = window.createWebview({
+  url: 'https://deno.land',
   incognito: true,
 });
 
 window.setTitle('Deno - WebviewJS');
-window.loadUrl('https://deno.land');
 
-window.evaluateScript(
+webview.evaluateScript(
   "setTimeout(() => alert('Hello from WebviewJS x Deno'), 5000)"
 );
 

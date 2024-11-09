@@ -3,13 +3,15 @@ const { Application } = requireScript('@webviewjs/webview');
 
 const app = new Application();
 
-const window = app.createBrowserWindow({
+const window = app.createBrowserWindow();
+
+const webview = window.createWebview({
+    url: 'https://nodejs.org',
     incognito: true,
 });
 
 window.setTitle('Node - WebviewJS');
-window.loadUrl('https://nodejs.org');
 
-window.evaluateScript("setTimeout(() => alert('Hello from WebviewJS x Node'), 5000)");
+webview.evaluateScript("setTimeout(() => alert('Hello from WebviewJS x Node'), 5000)");
 
 app.run();
