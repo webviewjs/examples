@@ -1,5 +1,11 @@
 import { Application } from '@webviewjs/webview';
 
+const icon = await fetch('https://deno.land/favicon.ico', {
+  redirect: 'follow',
+})
+  .then((res) => res.arrayBuffer())
+  .then((buffer) => Buffer.from(buffer));
+
 const app = new Application();
 
 const window = app.createBrowserWindow();
@@ -8,10 +14,8 @@ const webview = window.createWebview({
   incognito: true,
 });
 
-window.setTitle('Deno - WebviewJS');
+window.setWindowIcon(icon);
 
-webview.evaluateScript(
-  "setTimeout(() => alert('Hello from WebviewJS x Deno'), 5000)"
-);
+window.setTitle('Deno - WebviewJS');
 
 app.run();

@@ -10,8 +10,12 @@ const webview = window.createWebview({
     incognito: true,
 });
 
-window.setTitle('Node - WebviewJS');
+fetch('https://nodejs.org/favicon.ico', {
+    redirect: 'follow'
+})
+.then(res => res.arrayBuffer())
+.then(buffer => window.setWindowIcon(Buffer.from(buffer)));
 
-webview.evaluateScript("setTimeout(() => alert('Hello from WebviewJS x Node'), 5000)");
+window.setTitle('Node - WebviewJS');
 
 app.run();
